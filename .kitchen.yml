@@ -1,0 +1,29 @@
+---
+driver:
+  name: vagrant
+
+provisioner:
+  name: chef_solo
+
+# Uncomment the following verifier to leverage Inspec instead of Busser (the
+# default verifier)
+# verifier:
+#   name: inspec
+#   format: doc
+
+platforms:
+  - name: centos67
+    driver:
+      box: centos67
+      box_url: "/home/aman/chef-repo/bento-os/opscode_centos-6.7_chef-provisionerless.box"
+      network:
+        - ["private_network", { type: "dhcp"}]
+
+suites:
+  - name: default
+    run_list:
+      - recipe[yum::default]
+      - recipe[yum-epel::default]
+      - recipe[nginx::default]
+    attributes:
+
