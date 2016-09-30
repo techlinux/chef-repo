@@ -1,18 +1,10 @@
 # nginx Cookbook
 
-TODO: Enter the cookbook description here.
-
-e.g.
-This cookbook makes your favorite breakfast sandwich.
+TODO: Installs nginx to run on port 8080 (for example if you want to put varnish in front).
 
 ## Requirements
 
-TODO: List your cookbook requirements. Be sure to include any requirements this cookbook has on platforms, libraries, other cookbooks, packages, operating systems, etc.
-
-e.g.
-### Platforms
-
-- SandwichOS
+OS: CentOS 6.x, RHEL 6.x
 
 ### Chef
 
@@ -20,47 +12,15 @@ e.g.
 
 ### Cookbooks
 
-- `toaster` - nginx needs toaster to brown your bagel.
+Cookbooks dependencies: This install 'nginx' package from EPEL repo, hence 'yum-epel' cookbook is necessary (available in supermarket). Other recommended (not necessary) cookbooks are:
+1. yum
+2. chef-client
 
 ## Attributes
 
-TODO: List your cookbook attributes here.
+default['nginx']['port'] - You can change this to the port number on which you want nginx to run. If not mentioned, nginx will run on default port 80
 
-e.g.
-### nginx::default
-
-<table>
-  <tr>
-    <th>Key</th>
-    <th>Type</th>
-    <th>Description</th>
-    <th>Default</th>
-  </tr>
-  <tr>
-    <td><tt>['nginx']['bacon']</tt></td>
-    <td>Boolean</td>
-    <td>whether to include bacon</td>
-    <td><tt>true</tt></td>
-  </tr>
-</table>
-
-## Usage
-
-### nginx::default
-
-TODO: Write usage instructions for each cookbook.
-
-e.g.
-Just include `nginx` in your node's `run_list`:
-
-```json
-{
-  "name":"my_node",
-  "run_list": [
-    "recipe[nginx]"
-  ]
-}
-```
+default['nginx']['document_root'] - Defined the document root of nginx web server.
 
 ## Contributing
 
@@ -76,5 +36,6 @@ e.g.
 
 ## License and Authors
 
-Authors: TODO: List authors
+Authors: Aman Hanjrah
+Email: aman.hanjrah@gmail.com
 
