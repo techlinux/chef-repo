@@ -36,6 +36,4 @@ e.g.
 
 ## License and Authors
 
-Authors: Aman Hanjrah
-Email: aman.hanjrah@gmail.com
-
+Authors: Aman Hanjrah (aman.hanjrah@gmail.com)
