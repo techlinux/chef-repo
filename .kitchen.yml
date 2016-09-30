@@ -22,8 +22,9 @@ platforms:
 suites:
   - name: default
     run_list:
-      - recipe[yum::default]
-      - recipe[yum-epel::default]
-      - recipe[nginx::default]
+      - recipe[ntp::default]
+#      - recipe[yum::default]
+#      - recipe[yum-epel::default]
+#      - recipe[nginx::default]
     attributes:
 
