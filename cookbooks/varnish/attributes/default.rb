@@ -1,0 +1,6 @@
+default['varnish']['tmpdir'] = "/tmp"
+default['varnish']['version'] = "4.1"
+default['varnish']['confdirec'] = "/etc/varnish"
+default['varnish']['host'] = "127.0.0.1"
+default['varnish']['port'] = "8080"
+default['varnish']['loaddir'] = "/etc/sysconfig"
