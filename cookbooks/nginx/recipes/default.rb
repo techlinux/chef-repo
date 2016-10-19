@@ -10,10 +10,7 @@ service 'nginx' do
   action [ :enable, :start ]
 end
 
-document_root = node['nginx']['document_root']
-confdirec = node['nginx']['confdirec']
-
-template "#{document_root}/index.html" do
+template "#{node['nginx']['document_root']}/index.html" do
   source 'index.html.erb'
   mode '0644'
   variables(
@@ -22,7 +19,13 @@ template "#{document_root}/index.html" do
   )
 end
 
-template "#{confdirec}/default.conf" do
+template "#{node['nginx']['confdirec']}/nginx.conf}" do
+  source 'nginx.conf.erb'
+  mode 0644
+  notifies :restart, 'service[nginx]'
+end
+
+template "#{node['nginx']['confdirec']}/conf.d/default.conf" do
   source 'default.conf.erb'
   mode '0644'
   variables(

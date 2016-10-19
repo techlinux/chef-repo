@@ -18,7 +18,7 @@ end
 package "varnish"
 
 service "varnish" do
-  action [ :enable ]
+  action [ :enable, :start ]
 end
 
 template "#{node['varnish']['confdirec']}/techl.vcl" do
