@@ -10,6 +10,12 @@ service 'nginx' do
   action [ :enable, :start ]
 end
 
+template "#{node['nginx']['confdirec']}/nginx.conf" do
+  source 'nginx.conf.erb'
+  mode 0644
+  notifies :restart, 'service[nginx]'
+end
+
 template "#{node['nginx']['document_root']}/index.html" do
   source 'index.html.erb'
   mode '0644'
@@ -17,12 +23,6 @@ template "#{node['nginx']['document_root']}/index.html" do
     :message => node['motd']['message'],
     :port => node['nginx']['port']
   )
-end
-
-template "#{node['nginx']['confdirec']}/nginx.conf}" do
-  source 'nginx.conf.erb'
-  mode 0644
-  notifies :restart, 'service[nginx]'
 end
 
 template "#{node['nginx']['confdirec']}/conf.d/default.conf" do
