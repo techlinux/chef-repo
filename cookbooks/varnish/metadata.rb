@@ -4,7 +4,7 @@ maintainer_email 'aman.hanjrah@gmail.com'
 license 'GPLv2'
 description 'Installs/Configures varnish'
 long_description 'Installs/Configures varnish'
-version '0.1.1'
+version '0.1.2'
 
 # If you upload to Supermarket you should set this so your cookbook
 # gets a `View Issues` link

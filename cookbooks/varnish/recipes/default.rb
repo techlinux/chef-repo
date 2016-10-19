@@ -36,3 +36,12 @@ template "#{node['varnish']['loaddir']}/varnish" do
   mode "0644"
   notifies :restart, 'service[varnish]'
 end
+
+template "#{node['varnish']['confdirec']}/varnish.params" do
+  source "varnish.params.erb"
+  mode 0644
+  variables(
+    :port => node['varnish']['listenport']
+  )
+  notifies :restart, 'service[varnish]'
+end
