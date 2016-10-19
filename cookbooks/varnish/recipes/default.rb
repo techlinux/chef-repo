@@ -12,7 +12,7 @@ end
 rpm_package "varnish-#{node['varnish']['version']}.el6.rpm" do
   source "#{node['varnish']['tmpdir']}/varnish-#{node['varnish']['version']}.el6.rpm"
   action :install
-  not_if "ls /etc/yum.repos.d/varnish-#{node['varnish']['version']}.repo"
+  not_if {File.exist?("/etc/yum.repos.d/varnish-'#{node['varnish']['version']}'.repo")}
 end
 
 package "varnish"

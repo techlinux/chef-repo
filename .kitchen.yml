@@ -23,7 +23,8 @@ suites:
   - name: default
     run_list:
 #      - recipe[yum-epel::default]
-      - recipe[varnish::default]
+#      - recipe[varnish::default]
+      - recipe[mariadb::default]
 #      - recipe[nginx::default]
 #      - recipe[yum::default]
 #      - recipe[yum-epel::default]
