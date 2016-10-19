@@ -17,6 +17,7 @@ end
 bash "Clear unwanted stuff from mariadb" do
   not_if { File.exist?('/root/mariadbnoscript.txt') }
   code <<-EOH
+
           mysql -uroot -p$(cat /root/.mariadbpassword) -e 'DELETE FROM mysql.user WHERE User="";'
           mysql -uroot -p$(cat /root/.mariadbpassword) -e 'DROP DATABASE test;'
           mysql -uroot -p$(cat /root/.mariadbpassword) -e 'FLUSH PRIVILEGES;'

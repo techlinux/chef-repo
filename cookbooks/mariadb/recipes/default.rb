@@ -14,6 +14,13 @@ template "#{node['mariadb']['repodir']}/MariaDB.repo" do
   not_if {File.exist?("#{node['mariadb']['repodir']}/MariaDB.repo")}
 end
 
+bash "Remove conflicting packages from CentOS 7" do
+  code <<-EOF
+          rpm --nodeps -e mariadb-libs 2> /dev/null
+          exit 0
+          EOF
+end
+
 %w(MariaDB-server
    MariaDB-client).each do |pkg|
      package pkg do
