@@ -11,8 +11,7 @@ env:
 
 addons:
   apt:
-    packages:
-    - chefdk
-  yum:
+    sources:
+    - chef-stable-precise
     packages:
     - chefdk
