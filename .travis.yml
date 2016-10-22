@@ -1,9 +1,18 @@
-language: ruby
-rvm:
-- 2.1.2
-install:
- - cd chef-repo
- - mkdir .chef
- - echo 'cookbook_path ["/home/travis/build/techlinux/cookbooks"]' > .chef/knife.rb
- - bundle install
- - foodcritic -t ~ETSY006 -t ~CINK002 -I foodcritic/etsy/ -I foodcritic/customink-webops/ cookbooks
+
+language: generic
+
+sudo: false
+
+env:
+  global:
+  - PATH="/opt/chefdk/bin:/opt/chef/bin:/opt/chef/embedded/bin:/opt/chefdk/embedded/bin:$PATH"
+  matrix:
+  - COOKBOOK_PATH="cookbooks"
+
+addons:
+  apt:
+    packages:
+    - chefdk
+  yum:
+    packages:
+    - chefdk
