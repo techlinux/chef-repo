@@ -16,6 +16,15 @@ template "#{node['nginx']['confdirec']}/nginx.conf" do
   notifies :restart, 'service[nginx]'
 end
 
+template "#{node['nginx']['confdirec']}/conf.d/default.conf" do
+  source 'default.conf.erb'
+  mode '0644'
+  variables(
+    :port => node['nginx']['port']
+  )
+  notifies :restart, 'service[nginx]'
+end
+
 template "#{node['nginx']['document_root']}/index.html" do
   source 'index.html.erb'
   mode '0644'
@@ -25,11 +34,7 @@ template "#{node['nginx']['document_root']}/index.html" do
   )
 end
 
-template "#{node['nginx']['confdirec']}/conf.d/default.conf" do
-  source 'default.conf.erb'
+template "#{node['nginx']['document_root']}/info.php" do
+  source 'info.php.erb'
   mode '0644'
-  variables(
-    :port => node['nginx']['port']
-  )
-  notifies :restart, 'service[nginx]'
 end
