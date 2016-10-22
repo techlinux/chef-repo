@@ -4,6 +4,6 @@ rvm:
 install:
  - cd chef-repo
  - mkdir .chef
- - echo 'cookbook_path ["/home/travis/build/techlinux/chef-repo/cookbooks"]' > .chef/knife.rb
+ - echo 'cookbook_path ["/home/travis/build/techlinux/cookbooks"]' > .chef/knife.rb
  - bundle install
  - foodcritic -t ~ETSY006 -t ~CINK002 -I foodcritic/etsy/ -I foodcritic/customink-webops/ cookbooks
