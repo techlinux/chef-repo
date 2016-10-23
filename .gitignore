@@ -6,3 +6,4 @@
 .chef
 .chef/encrypted_data_bag_secret
 .kitchen
+.kitchen.yml
