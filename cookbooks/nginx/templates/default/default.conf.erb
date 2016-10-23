@@ -2,7 +2,7 @@
 # Do not make manual changes
 
 server {
-    listen       8080;
+    listen       <%= @port %>;
     server_name  _;
 
    access_log  /var/log/nginx/default.access.log  main;
