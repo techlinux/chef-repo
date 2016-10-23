@@ -54,9 +54,9 @@ module CookbookLogrotate
       def paths_from(hash)
         hash.select { |k| !(DIRECTIVES_AND_VALUES.include?(k)) }.reduce({}) do |accum_paths, (path, config)|
           accum_paths[path] = {
-            "directives" => directives_from(config),
-            "values" => values_from(config),
-            "scripts" => scripts_from(config),
+            'directives' => directives_from(config),
+            'values' => values_from(config),
+            'scripts' => scripts_from(config),
           }
 
           accum_paths
