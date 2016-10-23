@@ -24,9 +24,9 @@ suites:
     run_list:
 #      - recipe[yum-epel::default]
 #      - recipe[varnish::default]
-      - recipe[mariadb::default]
+#      - recipe[mariadb::default]
 #      - recipe[nginx::default]
 #      - recipe[yum::default]
-#      - recipe[yum-epel::default]
-#      - recipe[nginx::default]
+      - recipe[yum-epel::default]
+      - recipe[nginx::default]
     attributes:
