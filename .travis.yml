@@ -15,3 +15,5 @@ addons:
     - chef-stable-precise
     packages:
     - chefdk
+
+script: ./runtests
