@@ -18,15 +18,23 @@ platforms:
       box_url: "/home/aman/chef-repo/bento-os/opscode_centos-6.7_chef-provisionerless.box"
       network:
         - ["private_network", { type: "dhcp"}]
+  - name: centos72
+    driver:
+      box: centos72
+      box_url: "/home/aman/chef-repo/bento-os/opscode_centos-7.2_chef-provisionerless.box"
+      network:
+        - ["private_network", { type: "dhcp"}]
 
 suites:
   - name: default
     run_list:
 #      - recipe[yum-epel::default]
-#      - recipe[varnish::default]
-#      - recipe[mariadb::default]
-#      - recipe[nginx::default]
-#      - recipe[yum::default]
-      - recipe[yum-epel::default]
+      - recipe[varnish::default]
+      - recipe[mariadb::default]
+      - recipe[mariadb::_mysqlconf]
       - recipe[nginx::default]
+      - recipe[php::default]
+#      - recipe[yum::default]
+#      - recipe[yum-epel::default]
+#      - recipe[nginx::default]
     attributes:

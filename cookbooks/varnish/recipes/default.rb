@@ -4,13 +4,13 @@
 #
 # Copyright (c) 2016 techlinux, All Rights Reserved.
 
-remote_file "#{node['varnish']['tmpdir']}/varnish-#{node['varnish']['version']}.el6.rpm" do
-  source "https://repo.varnish-cache.org/redhat/varnish-#{node['varnish']['version']}.el6.rpm"
+remote_file "#{node['varnish']['tmpdir']}/varnish-#{node['varnish']['version']}.el7.rpm" do
+  source "https://repo.varnish-cache.org/redhat/varnish-#{node['varnish']['version']}.el7.rpm"
   action :create
 end
 
-rpm_package "varnish-#{node['varnish']['version']}.el6.rpm" do
-  source "#{node['varnish']['tmpdir']}/varnish-#{node['varnish']['version']}.el6.rpm"
+rpm_package "varnish-#{node['varnish']['version']}.el7.rpm" do
+  source "#{node['varnish']['tmpdir']}/varnish-#{node['varnish']['version']}.el7.rpm"
   action :install
   not_if {File.exist?("/etc/yum.repos.d/varnish-'#{node['varnish']['version']}'.repo")}
 end
