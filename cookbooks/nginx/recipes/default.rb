@@ -7,7 +7,7 @@
 package 'nginx'
 
 service 'nginx' do
-  action [ :enable, :start ]
+  action [:enable, :start]
 end
 
 template "#{node['nginx']['confdirec']}/nginx.conf" do
@@ -20,18 +20,9 @@ template "#{node['nginx']['confdirec']}/conf.d/default.conf" do
   source 'default.conf.erb'
   mode '0644'
   variables(
-    :port => node['nginx']['port']
+    port: node['nginx']['port']
   )
   notifies :restart, 'service[nginx]'
-end
-
-template "#{node['nginx']['document_root']}/index.html" do
-  source 'index.html.erb'
-  mode '0644'
-  variables(
-    :message => node['motd']['message'],
-    :port => node['nginx']['port']
-  )
 end
 
 template "#{node['nginx']['document_root']}/info.php" do

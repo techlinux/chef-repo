@@ -66,5 +66,5 @@ attribute :sslverify, kind_of: [TrueClass, FalseClass], default: nil
 attribute :timeout, kind_of: String, regex: /^\d+$/, default: nil
 attribute :options, kind_of: Hash
 
-alias_method :url, :baseurl
-alias_method :keyurl, :gpgkey
+alias :url :baseurl
+alias :keyurl :gpgkey

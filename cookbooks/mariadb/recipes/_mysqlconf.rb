@@ -4,7 +4,7 @@
 #
 # Copyright (c) 2016 techlinux, All Rights Reserved.
 
-bash "Generate secure password for MariaDB" do
+bash 'Generate secure password for MariaDB' do
   not_if { File.exist?('/root/.mariadbpassword') }
   code <<-EOH
           set -e
@@ -14,7 +14,7 @@ bash "Generate secure password for MariaDB" do
           EOH
 end
 
-bash "Clear unwanted stuff from mariadb" do
+bash 'Clear unwanted stuff from mariadb' do
   not_if { File.exist?('/root/mariadbnoscript.txt') }
   code <<-EOH
 
