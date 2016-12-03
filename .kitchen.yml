@@ -28,13 +28,15 @@ platforms:
 suites:
   - name: default
     run_list:
-#      - recipe[yum-epel::default]
-      - recipe[varnish::default]
-      - recipe[mariadb::default]
-      - recipe[mariadb::_mysqlconf]
-      - recipe[nginx::default]
-      - recipe[php::default]
+#      - recipe[epel::default]
+#      - recipe[varnish::default]
+#      - recipe[mariadb::default]
+#      - recipe[mariadb::_mysqlconf]
+#      - recipe[nginx::default]
+#      - recipe[nginx::techlinux]
+#      - recipe[php::default]
 #      - recipe[yum::default]
+      - recipe[cron::default]
 #      - recipe[yum-epel::default]
 #      - recipe[nginx::default]
     attributes:

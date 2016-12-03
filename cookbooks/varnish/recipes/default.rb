@@ -12,36 +12,36 @@ end
 rpm_package "varnish-#{node['varnish']['version']}.el7.rpm" do
   source "#{node['varnish']['tmpdir']}/varnish-#{node['varnish']['version']}.el7.rpm"
   action :install
-  not_if {File.exist?("/etc/yum.repos.d/varnish-'#{node['varnish']['version']}'.repo")}
+  not_if { File.exist?("/etc/yum.repos.d/varnish-'#{node['varnish']['version']}'.repo") }
 end
 
-package "varnish"
+package 'varnish'
 
-service "varnish" do
-  action [ :enable, :start ]
+service 'varnish' do
+  action [:enable, :start]
 end
 
 template "#{node['varnish']['confdirec']}/techl.vcl" do
-  source "techl.vcl.erb"
-  mode "0644"
+  source 'techl.vcl.erb'
+  mode 0644
   variables(
-    :host => node['varnish']['host'],
-    :port => node['varnish']['port']
+    host: node['varnish']['host'],
+    port: node['varnish']['port']
   )
   notifies :restart, 'service[varnish]'
 end
 
 template "#{node['varnish']['loaddir']}/varnish" do
-  source "varnish.erb"
-  mode "0644"
+  source 'varnish.erb'
+  mode 0644
   notifies :restart, 'service[varnish]'
 end
 
 template "#{node['varnish']['confdirec']}/varnish.params" do
-  source "varnish.params.erb"
+  source 'varnish.params.erb'
   mode 0644
   variables(
-    :port => node['varnish']['listenport']
+    port: node['varnish']['listenport']
   )
   notifies :restart, 'service[varnish]'
 end

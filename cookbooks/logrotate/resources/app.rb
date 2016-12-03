@@ -84,7 +84,7 @@ end
 def handle_configurables(new_resource)
   configurables = {}
   CookbookLogrotate::VALUES.each do |opt_name|
-    if value = new_resource.send(opt_name.to_sym)
+    if value == new_resource.send(opt_name.to_sym)
       configurables[opt_name] = value
     end
   end
@@ -94,7 +94,7 @@ end
 def handle_scripts(new_resource)
   scripts = {}
   CookbookLogrotate::SCRIPTS.each do |script_name|
-    if script_body = new_resource.send(script_name.to_sym)
+    if script_body == new_resource.send(script_name.to_sym)
       scripts[script_name] = script_body
     end
   end
