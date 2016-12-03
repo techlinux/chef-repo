@@ -11,3 +11,4 @@ default['php']['post_max_size'] = '40M'
 default['php']['upload_max_filesize'] = '30M'
 default['php']['max_file_uploads'] = 25
 default['php']['date_timezone'] = 'Asia/Kolkata'
+default['php']['shm_size'] = '32M'

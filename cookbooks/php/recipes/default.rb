@@ -35,7 +35,17 @@ end
 end
 
 service 'php-fpm' do
-  action [:enable, :start]
+  action :enable
+end
+
+
+template '/etc/php.d/apcu.ini' do
+  source 'apcu.ini.erb'
+  mode 0644
+  variables(
+    shm_size: node['php']['shm_size']
+  )
+  notifies :restart, 'service[php-fpm]'
 end
 
 template '/etc/php.ini' do

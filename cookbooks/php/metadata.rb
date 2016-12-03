@@ -4,7 +4,7 @@ maintainer_email 'a.hanjrah.1@gmail.com'
 license 'GPLv2'
 description 'Installs/Configures php'
 long_description 'Installs/Configures php'
-version '0.1.0'
+version '0.1.1'
 
 # If you upload to Supermarket you should set this so your cookbook
 # gets a `View Issues` link
