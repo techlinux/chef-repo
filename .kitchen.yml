@@ -15,26 +15,40 @@ platforms:
   - name: centos67
     driver:
       box: centos67
-      box_url: "/home/aman/chef-repo/bento-os/opscode_centos-6.7_chef-provisionerless.box"
+      box_url: "/home/aman/stuff/bento-os/opscode_centos-6.7_chef-provisionerless.box"
       network:
         - ["private_network", { type: "dhcp"}]
   - name: centos72
     driver:
       box: centos72
-      box_url: "/home/aman/chef-repo/bento-os/opscode_centos-7.2_chef-provisionerless.box"
+      box_url: "/home/aman/stuff/bento-os/opscode_centos-7.2_chef-provisionerless.box"
+      network:
+        - ["private_network", { type: "dhcp"}]
+
+  - name: bsd103
+    driver:
+      box: bsd103
+      box_url: "/home/aman/stuff/bento-os/opscode_freebsd-10.3_chef-provisionerless.box"
+      network:
+        - ["private_network", { type: "dhcp"}]
+  
+  - name: ubuntu1604
+    driver:
+      box: ubuntu1604
+      box_url: "/home/aman/stuff/bento-os/opscode_ubuntu-16.04_chef-provisionerless.box"
       network:
         - ["private_network", { type: "dhcp"}]
 
 suites:
   - name: default
     run_list:
-#      - recipe[epel::default]
-#      - recipe[varnish::default]
+      - recipe[epel::default]
+      - recipe[varnish::default]
 #      - recipe[mariadb::default]
 #      - recipe[mariadb::_mysqlconf]
-#      - recipe[nginx::default]
+      - recipe[nginx::default]
 #      - recipe[nginx::techlinux]
-      - recipe[php::default]
+#      - recipe[php::default]
 #      - recipe[yum::default]
 #      - recipe[cron::default]
 #      - recipe[yum-epel::default]

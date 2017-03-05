@@ -9,9 +9,16 @@ remote_file "#{node['varnish']['tmpdir']}/varnish-#{node['varnish']['version']}.
   action :create
 end
 
+
+execute 'clean-yum-cache' do
+  command 'yum clean all'
+  action :nothing
+end
+
 rpm_package "varnish-#{node['varnish']['version']}.el7.rpm" do
   source "#{node['varnish']['tmpdir']}/varnish-#{node['varnish']['version']}.el7.rpm"
   action :install
+  notifies :run, 'execute[clean-yum-cache]', :immediately
   not_if { File.exist?("/etc/yum.repos.d/varnish-'#{node['varnish']['version']}'.repo") }
 end
 
