@@ -1,15 +1,7 @@
 name 'cron'
-maintainer 'The Authors'
-maintainer_email 'you@example.com'
-license 'all_rights'
+maintainer 'Aman hanjrah'
+maintainer_email 'aman.hanjrah@gmail.com'
+license 'GPLv2'
 description 'Installs/Configures cron'
 long_description 'Installs/Configures cron'
-version '0.1.0'
-
-# If you upload to Supermarket you should set this so your cookbook
-# gets a `View Issues` link
-# issues_url 'https://github.com/<insert_org_here>/cron/issues' if respond_to?(:issues_url)
-
-# If you upload to Supermarket you should set this so your cookbook
-# gets a `View Source` link
-# source_url 'https://github.com/<insert_org_here>/cron' if respond_to?(:source_url)
+version '0.1.1'
