@@ -33,7 +33,10 @@ template "#{node['varnish']['confdirec']}/techl.vcl" do
   mode 0644
   variables(
     host: node['varnish']['host'],
-    port: node['varnish']['port']
+    port: node['varnish']['port'],
+    allowed1: node['varnish']['allowed1'],
+    allowed2: node['varnish']['allowed2'],
+    allowed3: node['varnish']['allowed3']
   )
   notifies :restart, 'service[varnish]'
 end

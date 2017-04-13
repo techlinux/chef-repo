@@ -6,7 +6,35 @@ backend default {
     .host = "<%= @host %>";
     .port = "<%= @port %>";
 }
+acl allowedlist {
+    "<%= @allowed1 %>";
+    "<%= @allowed2 %>";
+    "<%= @allowed3 %>";
+}
 
+sub vcl_recv {
+    if ( req.url ~ "wp-(login|admin)" && !client.ip ~ allowedlist ) {
+      return(synth(403, "Access Denied"));
+    }
+}
+
+sub vcl_synth {
+    set resp.http.Content-Type = "text/html; charset=utf-8";
+    synthetic( {"<!DOCTYPE html>
+	<html>
+	  <head>
+	    <title>"} + resp.status + " " + resp.reason + {"</title>
+	  </head>
+	<body>
+	  <h3>Error: Restricted access</h3>
+    <h3>You should not be here!</h3>
+	  <p>Your IP address <b>"} + client.ip + {"</b> has been recorded.</p>
+	  <hr>
+	</body>
+	</html>
+    "} );
+	return (deliver);
+}
 sub vcl_recv {
 }
 
