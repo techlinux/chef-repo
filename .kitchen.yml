@@ -42,11 +42,12 @@ platforms:
 suites:
   - name: default
     run_list:
+#      - recipe[apf::default]
       - recipe[epel::default]
       - recipe[varnish::default]
 #      - recipe[mariadb::default]
 #      - recipe[mariadb::_mysqlconf]
-      - recipe[nginx::default]
+#      - recipe[nginx::default]
 #      - recipe[nginx::techlinux]
 #      - recipe[php::default]
 #      - recipe[yum::default]
