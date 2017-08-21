@@ -8,6 +8,5 @@ cron 'chef client cron' do
   minute '*/15'
   user 'root'
   command 'chef-client'
-#  mailto 'aman.hanjrah@gmail.com'
   action :create
 end
